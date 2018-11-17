@@ -1,0 +1,1 @@
+启动方式：进入到target目录下->java -jar study-dubbo-service.jar &
