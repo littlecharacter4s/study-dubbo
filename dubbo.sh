@@ -59,6 +59,7 @@ start() {
         echo "$CLUSTER_NAME is already start,process id is:$PID,port is:$SERVER_PORT"
         exit 1
     fi
+    mkdir -p $LOG_DIR
     java $JAVA_OPTS -jar $SERVICE_JAR > "$STDOUT_DIR" 2>&1 &
     PID=`ps -ef | grep java | grep "$CLUSTER_NAME" | grep -v grep | awk '{print $2}'`
     if [ "$PID" == "" ]; then
