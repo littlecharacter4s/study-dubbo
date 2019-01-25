@@ -28,10 +28,10 @@ echo "SERVICE_DIR:$SERVICE_DIR"
 echo "CLUSTER_DIR:$CLUSTER_DIR"
 echo "CONF_DIR:$CONF_DIR"
 
-SERVER_NAME=`sed '/dubbo.application.name/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
-SERVER_PORT=`sed '/dubbo.protocol.port/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
-STDOUT_FILE=`sed '/dubbo.log.file/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
-JAVA_OPTS=`sed '/dubbo.java.options/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
+SERVER_NAME=`sed '/^#/d;/dubbo.application.name/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
+SERVER_PORT=`sed '/^#/d;/dubbo.protocol.port/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
+STDOUT_FILE=`sed '/^#/d;/dubbo.log.file/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
+JAVA_OPTS=`sed '/^#/d;/dubbo.java.options/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
 
 echo "JAVA_OPTS:$JAVA_OPTS"
 
