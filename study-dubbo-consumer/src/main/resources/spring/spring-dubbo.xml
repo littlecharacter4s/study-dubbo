@@ -13,7 +13,8 @@
 					address="${dubbo.registry.address}"
 					group="${dubbo.application.group}"/>
 
-	<dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />
+	<!-- <dubbo:protocol>：协议配置，用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受 -->
+	<!--<dubbo:protocol name="${dubbo.protocol.name}" port="${dubbo.protocol.port}" />-->
 
 	<dubbo:reference id="helloContract" interface="com.lc.dubbo.contract.HelloContract" check="false" />
 
