@@ -41,7 +41,7 @@
 
     <build>
         <finalName>study-dubbo-provider</finalName>
-
+        <!-- 打包各种资源，放到适当的位置：工作中如果涉及多个环境，要引入<profiles></profiles> -->
         <resources>
             <!-- 打包配置文件 -->
             <resource>

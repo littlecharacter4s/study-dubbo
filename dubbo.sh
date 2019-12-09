@@ -31,6 +31,7 @@ echo "CONF_DIR:$CONF_DIR"
 SERVER_NAME=`sed '/^#/d;/dubbo.application.name/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
 SERVER_PORT=`sed '/^#/d;/dubbo.protocol.port/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
 STDOUT_FILE=`sed '/^#/d;/dubbo.log.file/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
+#JAVA_OPTS可以以"dubbo.java.options."为开头一项一项的配置，然后组合成一行java参数，因为一行配置的字符数有限制
 JAVA_OPTS=`sed '/^#/d;/dubbo.java.options/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
 
 echo "JAVA_OPTS:$JAVA_OPTS"

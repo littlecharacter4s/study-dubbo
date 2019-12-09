@@ -22,9 +22,9 @@
                 |--service_name.jar(${dubbo.application.name}.jar)
         |--log
             |--cluster_name_x
-                |--service_name.log(${dubbo.application.name}.jar)
+                |--service_name.log(${dubbo.application.name}.log)
             |--cluster_name_y
-                |--service_name.log(${dubbo.application.name}.jar)
+                |--service_name.log(${dubbo.application.name}.log)
 注：${xx}是dubbo.properties中的属性
 2、将打包的服务jar包、lib文件夹和conf文件夹copy到cluster_name目录下
 3、执行dubbo.sh start|restart|stop cluster_name 启动|重启|关闭服务
@@ -52,7 +52,7 @@
                 <include>spring/application-context.xml</include>
             </includes>
         </resource>
-        <!-- 把*.properties拿到classes外边 -->
+        <!-- 把所有的*.properties都拿到classes外边conf的直接目录下 -->
         <resource>
             <targetPath>${project.build.directory}</targetPath>
             <directory>src/main/resources</directory>
