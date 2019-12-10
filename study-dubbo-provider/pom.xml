@@ -40,6 +40,7 @@
     </dependencies>
 
     <build>
+        <!-- 最终打成jar包的名称 -->
         <finalName>study-dubbo-provider</finalName>
         <!-- 打包各种资源，放到适当的位置：工作中如果涉及多个环境，要引入<profiles></profiles> -->
         <resources>
