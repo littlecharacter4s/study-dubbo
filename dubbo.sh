@@ -31,10 +31,19 @@ echo "CONF_DIR:$CONF_DIR"
 SERVER_NAME=`sed '/^#/d;/dubbo.application.name/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
 SERVER_PORT=`sed '/^#/d;/dubbo.protocol.port/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
 STDOUT_FILE=`sed '/^#/d;/dubbo.log.file/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
-#JAVA_OPTS可以以"dubbo.java.options."为开头一项一项的配置，然后组合成一行java参数，因为一行配置的字符数有限制
-JAVA_OPTS=`sed '/^#/d;/dubbo.java.options/!d;s/.*=//' $CONF_DIR/dubbo.properties | tr -d '\r'`
+#JAVA_OPTS可以以"java.options"为开头一项一项的配置，然后组合成一行java参数，因为一行配置的字符数有限制
+JAVA_OPTS=`sed '/^#/d;/java.options/!d;s/.*=-/-/' $CONF_DIR/dubbo.properties | tr -d '\r' | tr '\n' ' '`
 
-echo "JAVA_OPTS:$JAVA_OPTS"
+if [ -z "$SERVER_PORT" ]; then
+    SERVER_PORT=20880
+fi
+
+if [ -z "$STDOUT_FILE" ]; then
+    STDOUT_FILE="/dev/null"
+else
+    STDOUT_FILE="$LOG_DIR/$STDOUT_FILE"
+fi
+
 
 if [ -n "$JAVA_OPTS" ]; then
     #GC日志路径无法通过配置文件直接配置
@@ -48,10 +57,8 @@ echo "SERVER_PORT:$SERVER_PORT"
 echo "STDOUT_FILE:$STDOUT_FILE"
 echo "JAVA_OPTS:$JAVA_OPTS"
 
-STDOUT_DIR="$LOG_DIR/$STDOUT_FILE"
 SERVICE_JAR=$CLUSTER_DIR/$SERVER_NAME\.jar
 
-echo "STDOUT_DIR:$STDOUT_DIR"
 echo "SERVICE_JAR:$SERVICE_JAR"
 
 start() {
@@ -61,7 +68,7 @@ start() {
         exit 1
     fi
     mkdir -p $LOG_DIR
-    java $JAVA_OPTS -jar $SERVICE_JAR > "$STDOUT_DIR" 2>&1 &
+    java $JAVA_OPTS -jar $SERVICE_JAR > "$STDOUT_FILE" 2>&1 &
     PID=`ps -ef | grep java | grep "$CLUSTER_NAME" | grep -v grep | awk '{print $2}'`
     if [ "$PID" == "" ]; then
         echo "$CLUSTER_NAME start fail"
