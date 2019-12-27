@@ -1,5 +1,6 @@
-package com.lc.dubbo.contract;
+package com.lc.dubbo.component;
 
+import com.lc.dubbo.contract.HelloContract;
 import com.lc.dubbo.service.HelloService;
 import org.springframework.stereotype.Service;
 
