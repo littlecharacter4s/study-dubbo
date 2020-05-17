@@ -17,6 +17,6 @@ public class Main {
         System.out.println("启动dubbo服务...");
         new ClassPathXmlApplicationContext("classpath:spring/application-context.xml");
         System.out.println("启动dubbo服务成功!");
-        TimeUnit.SECONDS.sleep(1000L);
+        TimeUnit.SECONDS.sleep(3600L);
     }
 }
