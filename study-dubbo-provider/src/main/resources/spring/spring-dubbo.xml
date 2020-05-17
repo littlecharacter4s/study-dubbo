@@ -38,11 +38,7 @@
                    group="group_hello_1"/>
     <dubbo:service interface="com.lc.dubbo.contract.HelloContract"
                    ref="helloContract2"
-                   registry="registry_study"
-                   group="group_hello_2"/>
-    <dubbo:service interface="com.lc.dubbo.contract.HelloContract"
-                   ref="helloContract2"
-                   registry="registry_studyx"
+                   registry="registry_study,registry_studyx"
                    group="group_hello_2"/>
 
     <dubbo:monitor protocol="registry"/>
