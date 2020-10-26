@@ -15,4 +15,9 @@ public class HelloContractImpl1 implements HelloContract {
     public String sayHello(String name) {
         return helloService.sayHello(name + "1");
     }
+
+    @Override
+    public String getName(Long id) {
+        return "hw：" + id;
+    }
 }
