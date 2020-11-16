@@ -35,7 +35,9 @@
     <dubbo:service interface="com.lc.dubbo.contract.HelloContract"
                    ref="helloContract1"
                    registry="registry_study"
-                   group="group_hello_1"/>
+                   group="group_hello_1">
+        <dubbo:method name="getName" timeout="5000"/>
+    </dubbo:service>
     <dubbo:service interface="com.lc.dubbo.contract.HelloContract"
                    ref="helloContract2"
                    registry="registry_study,registry_studyx"

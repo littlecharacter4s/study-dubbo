@@ -25,7 +25,7 @@
     <dubbo:reference id="helloContract"
                      interface="com.lc.dubbo.contract.HelloContract"
                      registry="registry_study"
-                     group="group_hello_2"
+                     group="group_hello_1"
                      check="false"/>
 
     <dubbo:monitor protocol="registry"/>
