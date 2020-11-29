@@ -26,7 +26,9 @@
                      interface="com.lc.dubbo.contract.HelloContract"
                      registry="registry_study"
                      group="group_hello_1"
-                     check="false"/>
+                     check="false">
+        <dubbo:method name="getName" async="true"/>
+    </dubbo:reference>
 
     <dubbo:monitor protocol="registry"/>
 </beans>  
